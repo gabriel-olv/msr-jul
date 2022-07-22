@@ -36,6 +36,7 @@ public class Ocorrencia {
     @Column(length = 150, nullable = false)
     private String descricao;
 
+    @Column(nullable = false)
     private OffsetDateTime dataRegistro;
 
     @ManyToOne

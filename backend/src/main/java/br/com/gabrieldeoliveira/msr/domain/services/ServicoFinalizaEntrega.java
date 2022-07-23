@@ -3,7 +3,7 @@ package br.com.gabrieldeoliveira.msr.domain.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.gabrieldeoliveira.msr.domain.model.Entrega;
+import br.com.gabrieldeoliveira.msr.domain.models.Entrega;
 import lombok.AllArgsConstructor;
 
 @Service

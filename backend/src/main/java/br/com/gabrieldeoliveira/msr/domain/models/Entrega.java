@@ -1,4 +1,4 @@
-package br.com.gabrieldeoliveira.msr.domain.model;
+package br.com.gabrieldeoliveira.msr.domain.models;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import br.com.gabrieldeoliveira.msr.domain.model.enums.StatusEntrega;
+import br.com.gabrieldeoliveira.msr.domain.models.enums.StatusEntrega;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -5,9 +5,9 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import br.com.gabrieldeoliveira.msr.api.model.ocorrencia.OcorrenciaDeEntrada;
-import br.com.gabrieldeoliveira.msr.api.model.ocorrencia.OcorrenciaResumo;
-import br.com.gabrieldeoliveira.msr.domain.model.Ocorrencia;
+import br.com.gabrieldeoliveira.msr.api.models.ocorrencia.OcorrenciaDeEntrada;
+import br.com.gabrieldeoliveira.msr.api.models.ocorrencia.OcorrenciaResumo;
+import br.com.gabrieldeoliveira.msr.domain.models.Ocorrencia;
 import lombok.AllArgsConstructor;
 
 @Component

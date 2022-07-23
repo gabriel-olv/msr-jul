@@ -1,4 +1,4 @@
-package br.com.gabrieldeoliveira.msr.api.model.ocorrencia;
+package br.com.gabrieldeoliveira.msr.api.models.cliente;
 
 import java.io.Serializable;
 
@@ -14,10 +14,18 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class OcorrenciaDeEntrada implements Serializable {
+public class ClienteDeEntrada implements Serializable {
     static final long serialVersionUID = 1L;
 
     @NotBlank
-    @Size(max = 150)
-    private String descricao;
+    @Size(max = 60)
+    private String nome;
+    
+    @NotBlank
+    @Size(max = 60)
+    private String email;
+
+    @NotBlank
+    @Size(max = 20)
+    private String telefone;
 }

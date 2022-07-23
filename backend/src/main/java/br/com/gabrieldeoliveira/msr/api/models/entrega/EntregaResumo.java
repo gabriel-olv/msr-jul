@@ -1,10 +1,10 @@
-package br.com.gabrieldeoliveira.msr.api.model.entrega;
+package br.com.gabrieldeoliveira.msr.api.models.entrega;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
-import br.com.gabrieldeoliveira.msr.api.model.cliente.ClienteResumo;
-import br.com.gabrieldeoliveira.msr.api.model.destinatario.DestinatarioResumo;
+import br.com.gabrieldeoliveira.msr.api.models.cliente.ClienteResumo;
+import br.com.gabrieldeoliveira.msr.api.models.destinatario.DestinatarioResumo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

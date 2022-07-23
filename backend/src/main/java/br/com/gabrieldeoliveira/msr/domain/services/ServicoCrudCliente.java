@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.gabrieldeoliveira.msr.domain.model.Cliente;
+import br.com.gabrieldeoliveira.msr.domain.exceptions.ArgumentoInvalidoExcecao;
+import br.com.gabrieldeoliveira.msr.domain.exceptions.EntidadeNaoEncontradaExcecao;
+import br.com.gabrieldeoliveira.msr.domain.models.Cliente;
 import br.com.gabrieldeoliveira.msr.domain.repositories.RepositorioCliente;
 import lombok.AllArgsConstructor;
 
@@ -27,7 +29,7 @@ public class ServicoCrudCliente {
 
     @Transactional(readOnly = true)
     public Cliente buscarPorId(Long id) {
-        return repositorioCliente.findById(id).orElseThrow(() -> new RuntimeException(
+        return repositorioCliente.findById(id).orElseThrow(() -> new EntidadeNaoEncontradaExcecao(
             String.format("Cliente com Id = %d não encontrado", id)
         ));
     }
@@ -36,7 +38,7 @@ public class ServicoCrudCliente {
         try {
             return buscarPorId(clienteId);
         } catch (RuntimeException e) {
-            throw new IllegalArgumentException(
+            throw new ArgumentoInvalidoExcecao(
                 String.format("Cliente com Id = %d não encontrado", clienteId)
             );
         }

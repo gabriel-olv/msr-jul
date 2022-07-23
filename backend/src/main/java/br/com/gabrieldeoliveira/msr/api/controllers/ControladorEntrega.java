@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.gabrieldeoliveira.msr.api.model.entrega.EntregaDeEntrada;
-import br.com.gabrieldeoliveira.msr.api.model.entrega.EntregaResumo;
+import br.com.gabrieldeoliveira.msr.api.models.entrega.EntregaDeEntrada;
+import br.com.gabrieldeoliveira.msr.api.models.entrega.EntregaResumo;
 import br.com.gabrieldeoliveira.msr.api.transporters.TransportadorEntrega;
-import br.com.gabrieldeoliveira.msr.domain.model.Entrega;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoCancelaEntrega;
+import br.com.gabrieldeoliveira.msr.domain.models.Entrega;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoBuscaEntrega;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoFinalizaEntrega;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoNovaEntrega;

@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.gabrieldeoliveira.msr.api.model.ocorrencia.OcorrenciaDeEntrada;
-import br.com.gabrieldeoliveira.msr.api.model.ocorrencia.OcorrenciaResumo;
+import br.com.gabrieldeoliveira.msr.api.models.ocorrencia.OcorrenciaDeEntrada;
+import br.com.gabrieldeoliveira.msr.api.models.ocorrencia.OcorrenciaResumo;
 import br.com.gabrieldeoliveira.msr.api.transporters.TransportadorOcorrencia;
-import br.com.gabrieldeoliveira.msr.domain.model.Entrega;
-import br.com.gabrieldeoliveira.msr.domain.model.Ocorrencia;
+import br.com.gabrieldeoliveira.msr.domain.models.Entrega;
+import br.com.gabrieldeoliveira.msr.domain.models.Ocorrencia;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoBuscaEntrega;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoGeraOcorrencia;
 import lombok.AllArgsConstructor;

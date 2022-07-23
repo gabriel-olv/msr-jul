@@ -5,9 +5,9 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import br.com.gabrieldeoliveira.msr.api.model.entrega.EntregaDeEntrada;
-import br.com.gabrieldeoliveira.msr.api.model.entrega.EntregaResumo;
-import br.com.gabrieldeoliveira.msr.domain.model.Entrega;
+import br.com.gabrieldeoliveira.msr.api.models.entrega.EntregaDeEntrada;
+import br.com.gabrieldeoliveira.msr.api.models.entrega.EntregaResumo;
+import br.com.gabrieldeoliveira.msr.domain.models.Entrega;
 import lombok.AllArgsConstructor;
 
 @Component

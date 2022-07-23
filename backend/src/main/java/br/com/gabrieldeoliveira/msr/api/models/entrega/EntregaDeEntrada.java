@@ -1,11 +1,12 @@
-package br.com.gabrieldeoliveira.msr.api.model.entrega;
+package br.com.gabrieldeoliveira.msr.api.models.entrega;
 
 import java.io.Serializable;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
-import br.com.gabrieldeoliveira.msr.api.model.cliente.ClienteRef;
-import br.com.gabrieldeoliveira.msr.api.model.destinatario.DestinatarioDeEntrada;
+import br.com.gabrieldeoliveira.msr.api.models.cliente.ClienteRef;
+import br.com.gabrieldeoliveira.msr.api.models.destinatario.DestinatarioDeEntrada;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +20,10 @@ public class EntregaDeEntrada implements Serializable {
     static final long serialVersionUID = 1L;
 
     @Valid
+    @NotNull
     private ClienteRef cliente;
 
     @Valid
+    @NotNull
     private DestinatarioDeEntrada destinatario;
 }

@@ -1,7 +1,9 @@
-package br.com.gabrieldeoliveira.msr.api.model.ocorrencia;
+package br.com.gabrieldeoliveira.msr.api.models.ocorrencia;
 
 import java.io.Serializable;
-import java.time.OffsetDateTime;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,12 +14,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class OcorrenciaResumo implements Serializable {
+public class OcorrenciaDeEntrada implements Serializable {
     static final long serialVersionUID = 1L;
 
-    private Long id;
-
+    @NotBlank
+    @Size(max = 150)
     private String descricao;
-
-    private OffsetDateTime dataRegistro;
 }

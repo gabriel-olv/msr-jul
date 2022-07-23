@@ -1,4 +1,4 @@
-package br.com.gabrieldeoliveira.msr.domain.model.enums;
+package br.com.gabrieldeoliveira.msr.domain.models.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.gabrieldeoliveira.msr.api.model.cliente.ClienteDeEntrada;
-import br.com.gabrieldeoliveira.msr.api.model.cliente.ClienteDeEntradaAtualizacao;
-import br.com.gabrieldeoliveira.msr.api.model.cliente.ClienteResumo;
+import br.com.gabrieldeoliveira.msr.api.models.cliente.ClienteDeEntrada;
+import br.com.gabrieldeoliveira.msr.api.models.cliente.ClienteDeEntradaAtualizacao;
+import br.com.gabrieldeoliveira.msr.api.models.cliente.ClienteResumo;
 import br.com.gabrieldeoliveira.msr.api.transporters.TransportadorCliente;
-import br.com.gabrieldeoliveira.msr.domain.model.Cliente;
+import br.com.gabrieldeoliveira.msr.domain.models.Cliente;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoCrudCliente;
 import lombok.AllArgsConstructor;
 

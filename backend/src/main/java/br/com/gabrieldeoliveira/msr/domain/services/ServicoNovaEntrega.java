@@ -6,9 +6,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import br.com.gabrieldeoliveira.msr.domain.model.Cliente;
-import br.com.gabrieldeoliveira.msr.domain.model.Entrega;
-import br.com.gabrieldeoliveira.msr.domain.model.enums.StatusEntrega;
+import br.com.gabrieldeoliveira.msr.domain.models.Cliente;
+import br.com.gabrieldeoliveira.msr.domain.models.Entrega;
+import br.com.gabrieldeoliveira.msr.domain.models.enums.StatusEntrega;
 import br.com.gabrieldeoliveira.msr.domain.repositories.RepositorioEntrega;
 import lombok.AllArgsConstructor;
 

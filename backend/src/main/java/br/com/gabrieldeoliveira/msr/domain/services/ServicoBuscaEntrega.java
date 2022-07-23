@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.gabrieldeoliveira.msr.domain.model.Entrega;
+import br.com.gabrieldeoliveira.msr.domain.exceptions.EntidadeNaoEncontradaExcecao;
+import br.com.gabrieldeoliveira.msr.domain.models.Entrega;
 import br.com.gabrieldeoliveira.msr.domain.repositories.RepositorioEntrega;
 import lombok.AllArgsConstructor;
 
@@ -22,7 +23,7 @@ public class ServicoBuscaEntrega {
 
     @Transactional(readOnly = true)
     public Entrega buscaId(Long id) {
-        return repositorioEntrega.findById(id).orElseThrow(() -> new RuntimeException(
+        return repositorioEntrega.findById(id).orElseThrow(() -> new EntidadeNaoEncontradaExcecao(
                 String.format("Entrega com Id = %d não encontrada", id)));
     }
 }

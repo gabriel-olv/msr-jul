@@ -1,4 +1,4 @@
-package br.com.gabrieldeoliveira.msr.domain.model;
+package br.com.gabrieldeoliveira.msr.domain.models;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

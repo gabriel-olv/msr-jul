@@ -15,11 +15,12 @@ public class ServicoCrudEntrega {
 
     private RepositorioEntrega repositorioEntrega;
 
-    @Transactional
-    public Entrega salvar(Entrega entrega) {
-        return repositorioEntrega.save(entrega);
+    @Transactional(readOnly = true)
+    public List<Entrega> todasEntregas() {
+        return repositorioEntrega.findAll();
     }
 
+    @Transactional(readOnly = true)
     public Entrega buscaId(Long id) {
         return repositorioEntrega.findById(id).orElseThrow(() -> new RuntimeException(
                 String.format("Entrega com Id = %d não encontrada", id)));

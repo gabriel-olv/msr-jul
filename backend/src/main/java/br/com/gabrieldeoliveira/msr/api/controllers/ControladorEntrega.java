@@ -1,8 +1,11 @@
 package br.com.gabrieldeoliveira.msr.api.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,6 +18,7 @@ import br.com.gabrieldeoliveira.msr.api.model.entrega.EntregaResumo;
 import br.com.gabrieldeoliveira.msr.api.transporters.TransportadorEntrega;
 import br.com.gabrieldeoliveira.msr.domain.model.Entrega;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoCancelaEntrega;
+import br.com.gabrieldeoliveira.msr.domain.services.ServicoCrudEntrega;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoFinalizaEntrega;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoNovaEntrega;
 import lombok.AllArgsConstructor;
@@ -25,14 +29,27 @@ import lombok.AllArgsConstructor;
 public class ControladorEntrega {
     
     private ServicoNovaEntrega servicoNovaEntrega;
+    private ServicoCrudEntrega servicoCrudEntrega;
     private ServicoFinalizaEntrega servicoFinalizaEntrega;
     private ServicoCancelaEntrega ServicoCancelaEntrega;
     private TransportadorEntrega transportadorEntrega;
+
+    @GetMapping
+    public ResponseEntity<List<EntregaResumo>> listar() {
+        List<Entrega> entregas = servicoCrudEntrega.todasEntregas();
+        return ResponseEntity.ok(transportadorEntrega.paraListModeloResumo(entregas));
+    }
 
     @PostMapping
     public ResponseEntity<EntregaResumo> gerarEntrada(@RequestBody @Valid EntregaDeEntrada dto) {
         Entrega entrega = transportadorEntrega.paraEntidade(dto);
         entrega = servicoNovaEntrega.gerar(entrega);
+        return ResponseEntity.ok(transportadorEntrega.paraModeloResumo(entrega));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<EntregaResumo> buscarId(@PathVariable Long id) {
+        Entrega entrega = servicoCrudEntrega.buscaId(id);
         return ResponseEntity.ok(transportadorEntrega.paraModeloResumo(entrega));
     }
 

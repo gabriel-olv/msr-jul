@@ -1,5 +1,7 @@
 package br.com.gabrieldeoliveira.msr.domain.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

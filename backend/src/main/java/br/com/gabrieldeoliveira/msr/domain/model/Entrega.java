@@ -66,15 +66,31 @@ public class Entrega {
     }
 
     public Ocorrencia adicionarOcorrencia(String descricao) {
-        if (!podeGerarOcorrencia()) {
-            throw new RuntimeException("Falha ao gerar ocorrência");
-        }
+        verificarStatus();
         Ocorrencia ocorrencia = new Ocorrencia(null, descricao, OffsetDateTime.now(), this);
         getOcorrencias().add(ocorrencia);
         return ocorrencia;
     }
 
-    private boolean podeGerarOcorrencia() {
+    public void finalizar() {
+        verificarStatus();
+        setStatus(StatusEntrega.FINALIZADA);
+        setDataFinalizacao(OffsetDateTime.now());
+    }
+    
+    public void cancelar() {
+        verificarStatus();
+        setStatus(StatusEntrega.CANCELADA);
+        setDataFinalizacao(OffsetDateTime.now());
+    }
+
+    private void verificarStatus() {
+        if (!entregaPentende()) {
+            throw new RuntimeException("Falha ao gerar ocorrência"); 
+        }
+    }
+    
+    private boolean entregaPentende() {
         return getStatus().equals(StatusEntrega.PENDENTE);
     }
 }

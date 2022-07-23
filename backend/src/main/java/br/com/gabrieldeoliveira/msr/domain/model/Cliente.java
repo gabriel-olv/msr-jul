@@ -27,12 +27,9 @@ public class Cliente {
     @EqualsAndHashCode.Include
     private Long id;
 
-    @Column(length = 60, nullable = false)
     private String nome;
 
-    @Column(length = 60, nullable = false)
     private String email;
 
-    @Column(length = 20, nullable = false)
     private String telefone;
 }

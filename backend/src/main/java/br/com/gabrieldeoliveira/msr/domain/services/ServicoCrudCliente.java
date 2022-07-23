@@ -35,18 +35,28 @@ public class ServicoCrudCliente {
         Cliente cliente = buscarPorId(clienteId);
 
         //Atualiza-se nome, email e telefone se vier os dados.
+        atualizarCom(cliente, dadosNovos);
+        return repositorioCliente.save(cliente);
+    }
+    
+    @Transactional
+    public void removerId(Long id) {
+        buscarPorId(id);
+        repositorioCliente.deleteById(id);
+    }
+
+    private void atualizarCom(Cliente cliente, Cliente dadosNovos) {
         final String nome = dadosNovos.getNome();
         final String email = dadosNovos.getEmail();
         final String telefone = dadosNovos.getTelefone();
-        if (nome != null || nome != "") {
+        if (nome != null && nome != "") {
             cliente.setNome(nome);
         }
-        if (email != null || email != "") {
+        if (email != null && email != "") {
             cliente.setEmail(email);
         }
-        if (telefone != null || telefone != "") {
+        if (telefone != null && telefone != "") {
             cliente.setTelefone(telefone);
         }
-        return cliente;
     }
 }

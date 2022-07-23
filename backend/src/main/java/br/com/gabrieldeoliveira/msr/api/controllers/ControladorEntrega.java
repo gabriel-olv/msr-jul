@@ -18,7 +18,7 @@ import br.com.gabrieldeoliveira.msr.api.model.entrega.EntregaResumo;
 import br.com.gabrieldeoliveira.msr.api.transporters.TransportadorEntrega;
 import br.com.gabrieldeoliveira.msr.domain.model.Entrega;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoCancelaEntrega;
-import br.com.gabrieldeoliveira.msr.domain.services.ServicoCrudEntrega;
+import br.com.gabrieldeoliveira.msr.domain.services.ServicoBuscaEntrega;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoFinalizaEntrega;
 import br.com.gabrieldeoliveira.msr.domain.services.ServicoNovaEntrega;
 import lombok.AllArgsConstructor;
@@ -29,14 +29,14 @@ import lombok.AllArgsConstructor;
 public class ControladorEntrega {
     
     private ServicoNovaEntrega servicoNovaEntrega;
-    private ServicoCrudEntrega servicoCrudEntrega;
+    private ServicoBuscaEntrega servicoBuscaEntrega;
     private ServicoFinalizaEntrega servicoFinalizaEntrega;
     private ServicoCancelaEntrega ServicoCancelaEntrega;
     private TransportadorEntrega transportadorEntrega;
 
     @GetMapping
     public ResponseEntity<List<EntregaResumo>> listar() {
-        List<Entrega> entregas = servicoCrudEntrega.todasEntregas();
+        List<Entrega> entregas = servicoBuscaEntrega.todasEntregas();
         return ResponseEntity.ok(transportadorEntrega.paraListModeloResumo(entregas));
     }
 
@@ -49,7 +49,7 @@ public class ControladorEntrega {
 
     @GetMapping("/{id}")
     public ResponseEntity<EntregaResumo> buscarId(@PathVariable Long id) {
-        Entrega entrega = servicoCrudEntrega.buscaId(id);
+        Entrega entrega = servicoBuscaEntrega.buscaId(id);
         return ResponseEntity.ok(transportadorEntrega.paraModeloResumo(entrega));
     }
 

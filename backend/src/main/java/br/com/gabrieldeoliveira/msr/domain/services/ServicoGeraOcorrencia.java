@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ServicoGeraOcorrencia {
 
-    private ServicoCrudEntrega servicoCrudEntrega;
+    private ServicoBuscaEntrega servicoCrudEntrega;
 
     @Transactional
     public Ocorrencia gerar(Long entregaId, String descricao) {

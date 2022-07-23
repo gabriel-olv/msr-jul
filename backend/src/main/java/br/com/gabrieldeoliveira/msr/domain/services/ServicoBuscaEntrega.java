@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class ServicoCrudEntrega {
+public class ServicoBuscaEntrega {
 
     private RepositorioEntrega repositorioEntrega;
 

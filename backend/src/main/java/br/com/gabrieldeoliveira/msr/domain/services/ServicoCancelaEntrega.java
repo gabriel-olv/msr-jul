@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ServicoCancelaEntrega {
     
-    private ServicoCrudEntrega servicoCrudEntrega;
+    private ServicoBuscaEntrega servicoCrudEntrega;
 
     @Transactional
     public void cancelar(Long entregaId) {

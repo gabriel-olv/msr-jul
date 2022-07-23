@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ServicoFinalizaEntrega {
     
-    private ServicoCrudEntrega servicoCrudEntrega;
+    private ServicoBuscaEntrega servicoCrudEntrega;
 
     @Transactional
     public void finalizar(Long entregaId) {

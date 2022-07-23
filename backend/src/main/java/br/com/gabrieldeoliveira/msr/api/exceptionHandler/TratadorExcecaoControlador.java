@@ -19,6 +19,7 @@ import br.com.gabrieldeoliveira.msr.api.exceptionHandler.errors.models.ErroPadra
 import br.com.gabrieldeoliveira.msr.api.exceptionHandler.errors.models.ErroValidacao;
 import br.com.gabrieldeoliveira.msr.domain.exceptions.ArgumentoInvalidoExcecao;
 import br.com.gabrieldeoliveira.msr.domain.exceptions.EntidadeNaoEncontradaExcecao;
+import br.com.gabrieldeoliveira.msr.domain.exceptions.RegraNegocioExcecao;
 import lombok.AllArgsConstructor;
 
 @RestControllerAdvice
@@ -41,6 +42,16 @@ public class TratadorExcecaoControlador {
     public ResponseEntity<Erro> tratarArgumentoInvalidao(ArgumentoInvalidoExcecao e, HttpServletRequest req) {
         final Integer status = HttpStatus.BAD_REQUEST.value();
         final String title = "Argumento inválido";
+
+        Erro erro = new ErroPadrao(OffsetDateTime.now(), status, title, e.getMessage());
+
+        return ResponseEntity.status(status).body(erro);
+    }
+
+    @ExceptionHandler(RegraNegocioExcecao.class)
+    public ResponseEntity<Erro> tratarRegraNegocio(RegraNegocioExcecao e, HttpServletRequest req) {
+        final Integer status = HttpStatus.BAD_REQUEST.value();
+        final String title = "Solicitação inválida";
 
         Erro erro = new ErroPadrao(OffsetDateTime.now(), status, title, e.getMessage());
 

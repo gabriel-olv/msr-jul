@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.com.gabrieldeoliveira.msr.domain.exceptions.RegraNegocioExcecao;
 import br.com.gabrieldeoliveira.msr.domain.models.enums.StatusEntrega;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -66,30 +67,45 @@ public class Entrega {
     }
 
     public Ocorrencia adicionarOcorrencia(String descricao) {
-        verificarStatus();
+        verificarSePodeAdicionarOcorrencia();
         Ocorrencia ocorrencia = new Ocorrencia(null, descricao, OffsetDateTime.now(), this);
         getOcorrencias().add(ocorrencia);
         return ocorrencia;
     }
 
+    private void verificarSePodeAdicionarOcorrencia() {
+        if (!entregaPentende()) {
+            throw new RegraNegocioExcecao(
+                    String.format("Não pode gerar ocorrência. Status de entrega: %s", status.name()));
+        }
+    }
+
     public void finalizar() {
-        verificarStatus();
+        verificarSePodeFinalizar();
         setStatus(StatusEntrega.FINALIZADA);
         setDataFinalizacao(OffsetDateTime.now());
     }
-    
+
+    private void verificarSePodeFinalizar() {
+        if (!entregaPentende()) {
+            throw new RegraNegocioExcecao(
+                    String.format("Entrega não pode ser finalizada. Status de entrega: %s", status.name()));
+        }
+    }
+
     public void cancelar() {
-        verificarStatus();
+        verificarSePodeCancelar();
         setStatus(StatusEntrega.CANCELADA);
         setDataFinalizacao(OffsetDateTime.now());
     }
 
-    private void verificarStatus() {
+    private void verificarSePodeCancelar() {
         if (!entregaPentende()) {
-            throw new RuntimeException("Falha ao gerar ocorrência"); 
+            throw new RegraNegocioExcecao(
+                    String.format("Entrega não pode ser cancelada. Status de entrega: %s", status.name()));
         }
     }
-    
+
     private boolean entregaPentende() {
         return getStatus().equals(StatusEntrega.PENDENTE);
     }

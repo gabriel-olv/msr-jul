@@ -3,6 +3,8 @@ package br.com.gabrieldeoliveira.msr.api.controllers;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,14 +33,14 @@ public class ControladorCliente {
 
     private TransportadorCliente transportadorCliente;
 
-@GetMapping
-public ResponseEntity<List<ClienteResumo>> listar() {
-    List<Cliente> clientes = servicoCrudCliente.listarTodos();
-    return ResponseEntity.ok(transportadorCliente.paraListModeloResumo(clientes));
-}
+    @GetMapping
+    public ResponseEntity<List<ClienteResumo>> listar() {
+        List<Cliente> clientes = servicoCrudCliente.listarTodos();
+        return ResponseEntity.ok(transportadorCliente.paraListModeloResumo(clientes));
+    }
 
     @PostMapping
-    public ResponseEntity<ClienteResumo> salvar(@RequestBody ClienteDeEntrada dto) {
+    public ResponseEntity<ClienteResumo> salvar(@RequestBody @Valid ClienteDeEntrada dto) {
         Cliente cliente = transportadorCliente.paraEntidade(dto);
         cliente = servicoCrudCliente.salvar(cliente);
 
@@ -56,7 +58,7 @@ public ResponseEntity<List<ClienteResumo>> listar() {
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> atualizar(@PathVariable(name = "id") Long clienteId,
-            @RequestBody ClienteDeEntradaAtualizacao dto) {
+            @RequestBody @Valid ClienteDeEntradaAtualizacao dto) {
         Cliente dadosNovos = transportadorCliente.paraEntidade(dto);
         dadosNovos = servicoCrudCliente.atualizar(clienteId, dadosNovos);
 

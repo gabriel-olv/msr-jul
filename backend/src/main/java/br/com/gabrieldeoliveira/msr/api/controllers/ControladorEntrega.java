@@ -1,5 +1,7 @@
 package br.com.gabrieldeoliveira.msr.api.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +24,7 @@ public class ControladorEntrega {
     private TransportadorEntrega transportadorEntrega;
 
     @PostMapping
-    public ResponseEntity<EntregaResumo> gerarEntrada(@RequestBody EntregaDeEntrada dto) {
+    public ResponseEntity<EntregaResumo> gerarEntrada(@RequestBody @Valid EntregaDeEntrada dto) {
         Entrega entrega = transportadorEntrega.paraEntidade(dto);
         entrega = servicoNovaEntrega.gerar(entrega);
         return ResponseEntity.ok(transportadorEntrega.paraModeloResumo(entrega));

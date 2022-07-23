@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -49,7 +50,7 @@ public class Entrega {
     @Embedded
     private Destinatario destinatario;
 
-    @OneToMany(mappedBy = "entrega")
+    @OneToMany(mappedBy = "entrega", cascade = CascadeType.ALL)
     private List<Ocorrencia> ocorrencias = new ArrayList<>();
 
     public Entrega(Long id,
@@ -62,5 +63,18 @@ public class Entrega {
         this.dataFinalizacao = dataFinalizacao;
         this.status = status;
         this.cliente = cliente;
+    }
+
+    public Ocorrencia adicionarOcorrencia(String descricao) {
+        if (!podeGerarOcorrencia()) {
+            throw new RuntimeException("Falha ao gerar ocorrência");
+        }
+        Ocorrencia ocorrencia = new Ocorrencia(null, descricao, OffsetDateTime.now(), this);
+        getOcorrencias().add(ocorrencia);
+        return ocorrencia;
+    }
+
+    private boolean podeGerarOcorrencia() {
+        return getStatus().equals(StatusEntrega.PENDENTE);
     }
 }

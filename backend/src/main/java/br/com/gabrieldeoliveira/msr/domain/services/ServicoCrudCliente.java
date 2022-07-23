@@ -27,18 +27,30 @@ public class ServicoCrudCliente {
 
     @Transactional(readOnly = true)
     public Cliente buscarPorId(Long id) {
-        return repositorioCliente.findById(id).orElseThrow(() -> new RuntimeException());
+        return repositorioCliente.findById(id).orElseThrow(() -> new RuntimeException(
+            String.format("Cliente com Id = %d não encontrado", id)
+        ));
+    }
+
+    public Cliente idValido(Long clienteId) {
+        try {
+            return buscarPorId(clienteId);
+        } catch (RuntimeException e) {
+            throw new IllegalArgumentException(
+                String.format("Cliente com Id = %d não encontrado", clienteId)
+            );
+        }
     }
 
     @Transactional
     public Cliente atualizar(Long clienteId, Cliente dadosNovos) {
         Cliente cliente = buscarPorId(clienteId);
 
-        //Atualiza-se nome, email e telefone se vier os dados.
+        // Atualiza-se nome, email e telefone se vier os dados.
         atualizarCom(cliente, dadosNovos);
         return repositorioCliente.save(cliente);
     }
-    
+
     @Transactional
     public void removerId(Long id) {
         buscarPorId(id);

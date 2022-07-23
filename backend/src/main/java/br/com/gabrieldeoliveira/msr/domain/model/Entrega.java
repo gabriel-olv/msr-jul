@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -44,6 +45,9 @@ public class Entrega {
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
+
+    @Embedded
+    private Destinatario destinatario;
 
     @OneToMany(mappedBy = "entrega")
     private List<Ocorrencia> ocorrencias = new ArrayList<>();

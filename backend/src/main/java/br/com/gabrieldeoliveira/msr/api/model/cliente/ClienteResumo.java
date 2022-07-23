@@ -1,4 +1,4 @@
-package br.com.gabrieldeoliveira.msr.api.model;
+package br.com.gabrieldeoliveira.msr.api.model.cliente;
 
 import java.io.Serializable;
 

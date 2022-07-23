@@ -1,4 +1,4 @@
-package br.com.gabrieldeoliveira.msr.api.model;
+package br.com.gabrieldeoliveira.msr.api.model.destinatario;
 
 import java.io.Serializable;
 
@@ -11,12 +11,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ClienteDeEntradaAtualizacao implements Serializable {
+public class DestinatarioResumo implements Serializable {
     static final long serialVersionUID = 1L;
 
     private String nome;
 
-    private String email;
+    private String logradouro;
 
-    private String telefone;
+    private String numero;
+
+    private String complemento;
+
+    private String bairro;
 }
